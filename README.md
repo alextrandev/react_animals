@@ -1,1 +1,1 @@
-# react_animals
+# React Zoo App
