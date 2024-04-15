@@ -1,0 +1,10 @@
+:root {
+  background-color: rgb(175, 175, 175);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+
+.wrapper {
+  max-width: 1000px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
