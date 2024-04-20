@@ -9,9 +9,10 @@ function App() {
     <>
     <div className="wrapper shadow-xl bg-white">
       <Header />
-
-      <AnimalsGrid animals={animals}/>
-
+      <AnimalsGrid animals={animals} categoryName="Mammals"/>
+      <AnimalsGrid animals={birds} categoryName="Birds"/>
+      <AnimalsGrid animals={fishes} categoryName="Fishes"/>
+      <AnimalsGrid animals={insects} categoryName="Insects"/>
       <Footer />
     </div>
     </>
