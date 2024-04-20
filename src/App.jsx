@@ -1,7 +1,7 @@
 import Card from "./components/home/Card";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
-import { animals, birds, fishes, insects } from "./assets/animalsList";
+import { animals} from "./assets/animalsList";
 import './App.css';
 
 function App() {
