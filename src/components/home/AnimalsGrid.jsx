@@ -2,23 +2,18 @@ import { useState } from "react";
 import Card from "./Card";
 
 export default function AnimalsGrid({animals, categoryName}) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [displayAnimals, setDisplayAnimals] = useState([filterAnimals(currentPage)]);
+  const [page, setPage] = useState(0);
 
   const animalsPerPage = 21; // 7 item per row, render 3 rows
-  const numberOfAnimals = animals.length;
-  const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
-
-  const filterAnimals = page => animals.slice(page, page + animalsPerPage);
+  const numberOfPages = Math.ceil(animals.length / animalsPerPage);
+  const displayAnimals =  animals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
 
   const previousClickHandler = () => {
-    setCurrentPage(currentPage - 1);
-    setDisplayAnimals(filterAnimals(currentPage));
+    setPage(page - 1);
   }
 
   const nextClickHandler = () => {
-    setCurrentPage(currentPage + 1);
-    setDisplayAnimals(filterAnimals(currentPage));
+    setPage(page + 1);
   }
 
   return (
@@ -28,14 +23,14 @@ export default function AnimalsGrid({animals, categoryName}) {
             {displayAnimals.map(animal => <Card key={animal.name} {...animal}/>)}
         </div>
         <div>
-          {currentPage > 0 && 
+          {page > 0 && 
             <input 
               onClick={previousClickHandler}
               type="button"
               name="previous"
               value="< Previous" 
             />}
-          {currentPage < numberOfPages && 
+          {page < numberOfPages - 1 && 
             <input 
               onClick={nextClickHandler}
               type="button"
