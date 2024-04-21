@@ -1,11 +1,11 @@
 export default function Header({ navClickHandling }) {
   return (
-    <div className="bg-gray-500 text-white py-4 px-10">
+    <div className="bg-gray-500 flex justify-between text-white py-4 px-10">
       <div>
         <h1 className="text-xl"> React Zoo App</h1>
       </div>
       <div>
-        <ul>
+        <ul className="flex gap-4">
           <li id="mammal" onClick={navClickHandling}><p>Mammals</p></li>
           <li id="bird" onClick={navClickHandling}><p>Birds</p></li>
           <li id="fish" onClick={navClickHandling}><p>Fishes</p></li>

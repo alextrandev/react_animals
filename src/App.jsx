@@ -9,7 +9,6 @@ function App() {
   const [animalClass, setAnimalClass] = useState("");
   const navClickHandling = e => {
     setAnimalClass(e.currentTarget.id)
-    // console.log(e.currentTarget.id);
   };
 
   return (
