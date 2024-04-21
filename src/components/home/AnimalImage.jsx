@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 
 export default function AnimalImage({name}) {
+  // console.log(import.meta.env.VITE_API_KEY);
   const [imageLink, setImageLink] = useState("");
   const imageQuery = `https://api.iconify.design/search?query=${name}&limit=32`;
   axios
