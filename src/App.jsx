@@ -3,16 +3,25 @@ import Header from "./components/layout/Header";
 import { animals, birds, fishes, insects } from "./assets/animalsList";
 import './App.css';
 import AnimalsGrid from "./components/home/AnimalsGrid";
+import { useState } from "react";
 
 function App() {
+  const [animalClass, setAnimalClass] = useState("");
+  const navClickHandling = e => {
+    setAnimalClass(e.currentTarget.id)
+    // console.log(e.currentTarget.id);
+  };
+
   return (
     <>
     <div className="wrapper shadow-xl bg-white">
-      <Header />
-      <AnimalsGrid animals={animals} categoryName="Mammals"/>
-      <AnimalsGrid animals={birds} categoryName="Birds"/>
-      <AnimalsGrid animals={fishes} categoryName="Fishes"/>
-      <AnimalsGrid animals={insects} categoryName="Insects"/>
+      <Header navClickHandling={navClickHandling}/>
+
+      {animalClass == "mammal" && <AnimalsGrid animals={animals} categoryName="Mammals"/>}
+      {animalClass == "bird" && <AnimalsGrid animals={birds} categoryName="Birds"/>}
+      {animalClass == "fish" && <AnimalsGrid animals={fishes} categoryName="Fishes"/>}
+      {animalClass == "insect" && <AnimalsGrid animals={insects} categoryName="Insects"/>}
+
       <Footer />
     </div>
     </>
