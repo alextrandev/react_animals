@@ -6,7 +6,7 @@ import AnimalsGrid from "./components/home/AnimalsGrid";
 import { useState } from "react";
 
 function App() {
-  const [animalClass, setAnimalClass] = useState("");
+  const [animalClass, setAnimalClass] = useState("mammal");
   const navClickHandling = e => {
     setAnimalClass(e.currentTarget.id)
   };
