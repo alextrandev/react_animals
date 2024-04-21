@@ -4,7 +4,7 @@ import Card from "./Card";
 export default function AnimalsGrid({animals, categoryName}) {
   const [page, setPage] = useState(0);
 
-  const animalsPerPage = 14; // 7 item per row, render 3 rows
+  const animalsPerPage = 10;
   const numberOfAnimals = animals.length;
   const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
   const displayAnimals =  animals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
@@ -38,11 +38,11 @@ export default function AnimalsGrid({animals, categoryName}) {
             />}
             </div>
       </div>
-        <div className="main p-10 py-1 grid grid-cols-7 grid-rows-2 gap-2">
-            {displayAnimals.map(animal => <Card key={animal.name} {...animal}/>)}
+        <div className="main p-10 py-1 grid grid-cols-5 grid-rows-2 gap-2">
+            {displayAnimals.map(animal => <Card key={animal.name} {...animal} categoryName={categoryName}/>)}
         </div>
       <div className="text-center p-6">
-        <p>Displaying {page * animalsPerPage + 1} -  {(page + 1) * animalsPerPage +1} animals out of {numberOfAnimals}</p>
+        <p>Displaying {page * animalsPerPage + 1} -  {(page + 1) * animalsPerPage} animals out of {numberOfAnimals}</p>
       </div>
     </>
   )

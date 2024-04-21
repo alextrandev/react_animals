@@ -16,7 +16,7 @@ function App() {
     <div className="wrapper shadow-xl bg-white">
       <Header navClickHandling={navClickHandling}/>
 
-      {animalClass == "mammal" && <AnimalsGrid animals={animals} categoryName="Mammals"/>}
+      {animalClass == "mammal" && <AnimalsGrid animals={animals} categoryName="Terrestrial animals"/>}
       {animalClass == "bird" && <AnimalsGrid animals={birds} categoryName="Birds"/>}
       {animalClass == "fish" && <AnimalsGrid animals={fishes} categoryName="Fishes"/>}
       {animalClass == "insect" && <AnimalsGrid animals={insects} categoryName="Insects"/>}
