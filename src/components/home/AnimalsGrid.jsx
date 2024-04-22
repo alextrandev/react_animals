@@ -7,12 +7,14 @@ export default function AnimalsGrid({animals, categoryName}) {
   const [searchInput, setSearchInput] = useState("");
   const [hiddenAnimals, setHiddenAnimals] = useState([]);
 
-  const animalsPerPage = 10;
-  const numberOfAnimals = animals.length;
-  const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
   const formatedSearchInput = searchInput.trim().toLowerCase();
-  let filteredAnimals = animals.filter(animal => animal.name.includes(formatedSearchInput));
-  filteredAnimals = filteredAnimals.filter(animal => !hiddenAnimals.includes(animal.name))
+  const filteredAnimals = animals.filter(animal => 
+    animal.name.includes(formatedSearchInput) 
+    && !hiddenAnimals.includes(animal.name)
+    );
+  const animalsPerPage = 10;
+  const numberOfAnimals = filteredAnimals.length;
+  const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
   const displayAnimals =  filteredAnimals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
 
   const previousClickHandler = () => {
