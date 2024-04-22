@@ -1,13 +1,17 @@
 import { useState } from "react";
 import Card from "./Card";
+import SearchBar from "./SearchBar";
 
 export default function AnimalsGrid({animals, categoryName}) {
   const [page, setPage] = useState(0);
+  const [searchInput, setSearchInput] = useState("");
 
   const animalsPerPage = 10;
   const numberOfAnimals = animals.length;
   const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
-  const displayAnimals =  animals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
+  const formatedSearchInput = searchInput.trim().toLowerCase();
+  const filteredAnimals = animals.filter(animal => animal.name.includes(formatedSearchInput));
+  const displayAnimals =  filteredAnimals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
 
   const previousClickHandler = () => {
     setPage(page - 1);
@@ -17,10 +21,15 @@ export default function AnimalsGrid({animals, categoryName}) {
     setPage(page + 1);
   }
 
+  const searchChangeHandler = e => {
+    setSearchInput(e.target.value);
+  }
+
   return (
     <>
       <div className="flex justify-between">
         <h2 className="text-xl font-bold p-10 pb-1">{categoryName}</h2>
+        <SearchBar searchChangeHandler={searchChangeHandler}/>
         <div className="p-10 flex gap-4">
           {page > 0 && 
             <input 
