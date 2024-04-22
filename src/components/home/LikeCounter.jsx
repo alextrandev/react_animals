@@ -3,18 +3,19 @@ import { useState } from "react"
 export default function LikeCounter({likes}) {
   const [likeCounter, setLikeCounter] = useState(likes);
   
-  const handleLike = () => {
-    setLikeCounter(likeCounter + 1);
-  }
-
-  const handleDislike = () => {
-    setLikeCounter(likeCounter -1);
+  const handleLike = e => {
+    if (e.target.id == "addLike") {
+        setLikeCounter(likeCounter + 1);
+    } else if (e.target.id == "removeLike") {
+        setLikeCounter(likeCounter - 1);
+    }
   }
 
   return (
     <div className="flex justify-between p-2">
         <span 
             className="material-symbols-rounded text-green-500"
+            id="addLike"
             onClick={handleLike}
         >thumb_up</span>
         <div className="flex gap-1">
@@ -27,7 +28,8 @@ export default function LikeCounter({likes}) {
         </div>
         <span 
             className="material-symbols-rounded text-red-500"
-            onClick={handleDislike}
+            id="removeLike"
+            onClick={handleLike}
         >thumb_down</span>
     </div>
   )
