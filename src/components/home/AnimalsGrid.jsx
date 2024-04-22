@@ -5,12 +5,14 @@ import SearchBar from "./SearchBar";
 export default function AnimalsGrid({animals, categoryName}) {
   const [page, setPage] = useState(0);
   const [searchInput, setSearchInput] = useState("");
+  const [hiddenAnimals, setHiddenAnimals] = useState([]);
 
   const animalsPerPage = 10;
   const numberOfAnimals = animals.length;
   const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
   const formatedSearchInput = searchInput.trim().toLowerCase();
-  const filteredAnimals = animals.filter(animal => animal.name.includes(formatedSearchInput));
+  let filteredAnimals = animals.filter(animal => animal.name.includes(formatedSearchInput));
+  filteredAnimals = filteredAnimals.filter(animal => !hiddenAnimals.includes(animal.name))
   const displayAnimals =  filteredAnimals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
 
   const previousClickHandler = () => {
@@ -23,6 +25,10 @@ export default function AnimalsGrid({animals, categoryName}) {
 
   const searchChangeHandler = e => {
     setSearchInput(e.target.value);
+  }
+
+  const hideAnimal = e => {
+    setHiddenAnimals([...hiddenAnimals, e.target.id])
   }
 
   return (
@@ -48,7 +54,13 @@ export default function AnimalsGrid({animals, categoryName}) {
             </div>
       </div>
         <div className="main p-10 py-1 grid grid-cols-5 grid-rows-2 gap-2">
-            {displayAnimals.map(animal => <Card key={animal.name} {...animal} categoryName={categoryName}/>)}
+            {displayAnimals.map(animal => 
+              <Card 
+                key={animal.name} 
+                {...animal} 
+                categoryName={categoryName}
+                hideAnimal={hideAnimal}
+              />)}
         </div>
       <div className="text-center p-6">
         <p>Displaying {page * animalsPerPage + 1} -  {(page + 1) * animalsPerPage} animals out of {numberOfAnimals}</p>
