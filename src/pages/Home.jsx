@@ -16,8 +16,12 @@ export default function Home() {
         <Link to={"/birds"}>
           <HomepageCard name="Birds" image={birds_image} />
         </Link>
-        <HomepageCard name="Fishes" image={fishes_image} />
-        <HomepageCard name="Insects" image={insects_image} />
+        <Link to={"/fishes"}>
+          <HomepageCard name="Fishes" image={fishes_image} />
+        </Link>
+        <Link to={"/insects"}>
+          <HomepageCard name="Insects" image={insects_image} />
+        </Link>
       </div>
     </div>
   )
