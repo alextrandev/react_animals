@@ -28,7 +28,7 @@ export default function AnimalImage({ name, categoryName }) {
   //   setImageLink(photos.photos[0].src.original);
   // });
 
-  const imageLink = `https://source.unsplash.com/500x500/?the%20${name}+${categoryQuery}`
+  const imageLink = `https://source.unsplash.com/200x200/?${name}+${categoryQuery}`
 
   // const imageLink = "https://graylinghospitalforanimals.com/wp-content/uploads/sites/19/2022/08/Placeholder-725-×-725-px.png"
   //simple placeholder image to speedup testing
