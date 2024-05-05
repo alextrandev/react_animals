@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { createClient } from 'pexels';
+// import { useState } from 'react';
+// import { createClient } from 'pexels';
 
 export default function AnimalImage({ name, categoryName }) {
-  const [imageLink, setImageLink] = useState("");
+  // const [imageLink, setImageLink] = useState("");
 
   let categoryQuery = "animal";
 
@@ -21,15 +21,17 @@ export default function AnimalImage({ name, categoryName }) {
       break;
   }
 
-  const query = name + " " + categoryQuery;
-  const client = createClient(import.meta.env.VITE_API_KEY);
+  // const query = name + " " + categoryQuery;
+  // const client = createClient(import.meta.env.VITE_API_KEY);
 
-  client.photos.search({ query, orientation: "landscape", per_page: 1 }).then(photos => {
-    setImageLink(photos.photos[0].src.original);
-  });
+  // client.photos.search({ query, orientation: "landscape", per_page: 1 }).then(photos => {
+  //   setImageLink(photos.photos[0].src.original);
+  // });
+
+  const imageLink = `https://source.unsplash.com/500x500/?the%20${name}+${categoryQuery}`
 
   // const imageLink = "https://graylinghospitalforanimals.com/wp-content/uploads/sites/19/2022/08/Placeholder-725-×-725-px.png"
-  //for testing to prevent too much fetching
+  //simple placeholder image to speedup testing
 
   return (
     <img src={imageLink} className="h-full" alt={`image of a/an ${name}`} />
