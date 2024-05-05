@@ -5,10 +5,20 @@
 
 .wrapper {
   max-width: 1000px;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0 auto;
 }
 
 .main {
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 84vh;
+  justify-content: center;
+}
+
+.active {
+  font-weight: 1000;
+  color: rgb(22, 78, 200);
+  text-decoration: underline;
 }

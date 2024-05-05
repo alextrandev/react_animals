@@ -35,10 +35,10 @@ export default function AnimalsGrid({ animals, categoryName }) {
 
   return (
     <div className="main">
-      <div className="flex justify-between">
-        <h2 className="text-xl font-bold p-10 pb-1">{categoryName}</h2>
+      <div className="flex px-10 justify-between">
+        <h2 className="text-xl font-boldpb-1">{categoryName}</h2>
         <SearchBar searchChangeHandler={searchChangeHandler} />
-        <div className="p-10 flex gap-4">
+        <div className="flex gap-4">
           {page > 0 &&
             <input
               onClick={previousClickHandler}
@@ -55,7 +55,7 @@ export default function AnimalsGrid({ animals, categoryName }) {
             />}
         </div>
       </div>
-      <div className="main p-10 py-1 grid grid-cols-5 grid-rows-2 gap-2">
+      <div className="px-10 py-6 grid grid-cols-5 grid-rows-2 gap-2">
         {displayAnimals.map(animal =>
           <Card
             key={animal.name}
@@ -64,7 +64,7 @@ export default function AnimalsGrid({ animals, categoryName }) {
             hideAnimal={hideAnimal}
           />)}
       </div>
-      <div className="text-center p-6">
+      <div className="text-center px-6">
         <p>Displaying {page * animalsPerPage + 1} -  {(page + 1) * animalsPerPage} animals out of {numberOfAnimals}</p>
       </div>
     </div>
