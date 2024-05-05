@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import HomepageCard from '../components/home/HomepageCard'
 import animals_image from '/images/animals_image.jpeg'
 import birds_image from '/images/birds_image.webp'
@@ -9,8 +10,12 @@ export default function Home() {
   return (
     <div className="main p-10">
       <div className="grid grid-cols-2 rounded-lg overflow-hidden shadow-lg">
-        <HomepageCard name="Animals" image={animals_image} />
-        <HomepageCard name="Birds" image={birds_image} />
+        <Link to={"/animals"}>
+          <HomepageCard name="Animals" image={animals_image} />
+        </Link>
+        <Link to={"/birds"}>
+          <HomepageCard name="Birds" image={birds_image} />
+        </Link>
         <HomepageCard name="Fishes" image={fishes_image} />
         <HomepageCard name="Insects" image={insects_image} />
       </div>
