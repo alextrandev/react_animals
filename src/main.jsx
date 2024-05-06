@@ -7,6 +7,7 @@ import Root from './components/layout/Root';
 import Home from './pages/Home.jsx';
 import { animals, birds, fishes, insects } from './assets/animalsList.js';
 import CategoryPage from './pages/CategoryPage.jsx';
+import AnimalPage from './pages/AnimalPage.jsx';
 window.require = (name) => new URL(name, import.meta.url).href;
 
 
@@ -19,6 +20,7 @@ function App() {
       children: [
         { path: "/", element: <Home /> },
         { path: ":category", element: <CategoryPage {...zoo} /> },
+        { path: ":category/:animal", element: <AnimalPage {...zoo} /> }
       ]
     }
   ])
