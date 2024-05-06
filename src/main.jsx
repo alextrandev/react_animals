@@ -19,10 +19,6 @@ function App() {
       children: [
         { path: "/", element: <Home /> },
         { path: ":category", element: <CategoryPage {...zoo} /> },
-        // { path: "/animals", element: <Animals /> },
-        // { path: "/birds", element: <Birds /> },
-        // { path: "/fishes", element: <Fishes /> },
-        // { path: "/insects", element: <Insects /> }
       ]
     }
   ])
