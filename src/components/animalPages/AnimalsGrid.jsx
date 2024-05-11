@@ -1,23 +1,26 @@
 import { useState } from "react";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
+import debounce from "../../functions/debounce";
 
 export default function AnimalsGrid({ animals, categoryName }) {
   const [page, setPage] = useState(0);
   const [searchInput, setSearchInput] = useState("");
   const [hiddenAnimals, setHiddenAnimals] = useState([]);
 
-  const formatedSearchInput = searchInput.trim().toLowerCase();
+  // search function using filter
+  const formatedInput = searchInput.trim().toLowerCase();
   const filteredAnimals = animals.filter(animal =>
-    animal.name.includes(formatedSearchInput)
-    && !hiddenAnimals.includes(animal.name)
+    animal.name.includes(formatedInput)
+    && !hiddenAnimals.includes(animal.name) // to exclude closed animal from result
   );
+
+  // pagination function using slice
   const animalsPerPage = 10;
   const numberOfAnimals = filteredAnimals.length;
   const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
   const displayAnimals = filteredAnimals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
-
-  if (displayAnimals.length == 0) setPage(page - 1);
+  if (displayAnimals.length == 0) setPage(page - 1); // to move to previous page when page is empty
 
   const previousClickHandler = () => {
     setPage(page - 1);
@@ -27,13 +30,9 @@ export default function AnimalsGrid({ animals, categoryName }) {
     setPage(page + 1);
   }
 
-  const searchChangeHandler = e => {
-    setSearchInput(e.target.value);
-  }
+  const searchChangeHandler = debounce(e => setSearchInput(e.target.value), 1000);
 
-  const hideAnimal = e => {
-    setHiddenAnimals([...hiddenAnimals, e.target.id])
-  }
+  const hideAnimal = e => setHiddenAnimals([...hiddenAnimals, e.target.id]);
 
   return (
     <div className="main">
