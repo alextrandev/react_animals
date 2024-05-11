@@ -17,6 +17,8 @@ export default function AnimalsGrid({ animals, categoryName }) {
   const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
   const displayAnimals = filteredAnimals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
 
+  if (displayAnimals.length == 0) setPage(page - 1);
+
   const previousClickHandler = () => {
     setPage(page - 1);
   }
@@ -65,7 +67,7 @@ export default function AnimalsGrid({ animals, categoryName }) {
           />)}
       </div>
       <div className="text-center px-6">
-        <p>Displaying {page * animalsPerPage + 1} -  {(page + 1) * animalsPerPage} animals out of {numberOfAnimals}</p>
+        <p>Displaying {page * animalsPerPage + 1} -  {page * animalsPerPage + displayAnimals.length} animals out of {numberOfAnimals}</p>
       </div>
     </div>
   )
