@@ -1,9 +1,12 @@
+import logo from "/images/zoo_logo.webp";
 // import { useState } from 'react';
 // import { createClient } from 'pexels';
 
+import { useState } from "react";
+
 export default function AnimalImage({ name, categoryName }) {
   // const [imageLink, setImageLink] = useState("");
-
+  const [imageLoaded, setImageLoaded] = useState(false);
   let categoryQuery = "animal";
 
   switch (categoryName) {
@@ -34,6 +37,14 @@ export default function AnimalImage({ name, categoryName }) {
   //simple placeholder image to speedup testing
 
   return (
-    <img src={imageLink} className="h-full w-full" alt={`image of a/an ${name}`} />
+    <>
+      {!imageLoaded && <img src={logo} className="h-full w-full" alt="Placeholder image" />}
+      <img
+        src={imageLink}
+        className={`h-full w-full ${!imageLoaded && "hidden"}`}
+        onLoad={() => setImageLoaded(true)}
+        alt={`image of a/an ${name}`}
+      />
+    </>
   )
 }
