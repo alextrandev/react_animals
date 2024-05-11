@@ -22,3 +22,14 @@
   color: rgb(22, 78, 200);
   text-decoration: underline;
 }
+
+.text-very-satisfied {
+    background-image: linear-gradient(to top right, rgb(62, 225, 62), rgb(84, 138, 255), rgb(255, 64, 64));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hidden {
+  display: none;
+}
