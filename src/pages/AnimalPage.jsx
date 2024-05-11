@@ -9,21 +9,20 @@ export default function AnimalPage() {
 
   const navigate = useNavigate();
 
-  const fetchData = () => {
-    axios
-      .get(`https://en.wikipedia.org/api/rest_v1/page/summary/${animal}`,
-        {
-          headers: { 'accept': 'application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/Summary/1.4.2"' }
-        })
-      .then(response => setAnimalData(response.data))
-      .catch(error => console.log(error));
-  }
 
   useEffect(() => {
-    fetchData();
-  }, {});
+    const fetchData = () => {
+      axios
+        .get(`https://en.wikipedia.org/api/rest_v1/page/summary/${animal}`,
+          {
+            headers: { 'accept': 'application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/Summary/1.4.2"' }
+          })
+        .then(response => setAnimalData(response.data))
+        .catch(error => console.log(error));
+    }
 
-  // console.log(animalData);
+    fetchData();
+  }, [animal]);
 
   return (
     <div className="main p-10">
