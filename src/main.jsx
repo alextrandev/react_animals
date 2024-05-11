@@ -9,7 +9,7 @@ import { animals, birds, fishes, insects } from './assets/animalsList.js';
 import CategoryPage from './pages/CategoryPage.jsx';
 import AnimalPage from './pages/AnimalPage.jsx';
 window.require = (name) => new URL(name, import.meta.url).href;
-
+console.log("Copyright © Alex Tran (https://alextran.dev)");
 
 function App() {
   const [zoo, setZoo] = useState({ animals, birds, fishes, insects })
