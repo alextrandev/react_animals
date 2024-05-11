@@ -4,7 +4,7 @@ import AnimalImage from "./AnimalImage";
 import LikeCounter from "./LikeCounter";
 
 function Card({ name, likes, categoryName, hideAnimal }) {
-  const formatedName = name.charAt(0).toUpperCase() + name.slice(1).replace("-", " ");
+  const formatedName = name.charAt(0).toUpperCase() + name.slice(1).replace("-", " "); // some animal have hypening name so this one to format them properly
   const [likeCounter, setLikeCounter] = useState(likes);
 
   const handleLike = e => {

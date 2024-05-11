@@ -7,9 +7,8 @@ export default function AnimalPage() {
   const { category, animal } = useParams();
   const [animalData, setAnimalData] = useState({})
 
-  const navigate = useNavigate();
-
-
+  const navigate = useNavigate(); // for the back button, like history.go but not refreshing the page
+  // use effect here to prevent infinite re-rendering
   useEffect(() => {
     const fetchData = () => {
       axios
@@ -20,7 +19,6 @@ export default function AnimalPage() {
         .then(response => setAnimalData(response.data))
         .catch(error => console.log(error));
     }
-
     fetchData();
   }, [animal]);
 
