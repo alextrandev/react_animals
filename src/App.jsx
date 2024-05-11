@@ -11,7 +11,7 @@ export default function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Root />,
+      element: <Root zoo={zoo}/>,
       children: [
         { path: "/", element: <Home zoo={zoo} /> },
         { path: ":category", element: <CategoryPage {...zoo} /> },

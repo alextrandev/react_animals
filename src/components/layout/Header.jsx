@@ -1,7 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import logo from "/images/zoo_logo.webp";
 
-export default function Header() {
+export default function Header({ zoo }) {
   return (
     <header className="bg-gray-500 flex justify-between items-center px-10 text-white h-[8vh]">
       <div>
@@ -13,10 +13,11 @@ export default function Header() {
       <div>
         <ul className="flex gap-8">
           <li><NavLink to={"/"}>Home</NavLink ></li>
-          <li><NavLink to={"/animals"}>Animals</NavLink ></li>
-          <li><NavLink to={"/birds"}>Birds</NavLink ></li>
-          <li><NavLink to={"/fishes"}>Fishes</NavLink ></li>
-          <li><NavLink to={"/insects"}>Insects</NavLink ></li>
+          {Object.keys(zoo).map(category => // turn object into array to ilterate
+            <li key={category}>
+              <NavLink to={`/${category}`}>{category[0].toUpperCase() + category.slice(1)}</NavLink >
+            </li>
+          )}
         </ul>
       </div>
     </ header>
