@@ -7,13 +7,13 @@ import CategoryPage from './pages/CategoryPage.jsx';
 import AnimalPage from './pages/AnimalPage.jsx';
 
 export default function App() {
-  const [zoo, setZoo] = useState({ animals, birds, fishes, insects })
+  const [zoo, setZoo] = useState({ animals, birds, fishes, insects }) // need work
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Root />,
       children: [
-        { path: "/", element: <Home /> },
+        { path: "/", element: <Home zoo={zoo} /> },
         { path: ":category", element: <CategoryPage {...zoo} /> },
         { path: ":category/:animal", element: <AnimalPage {...zoo} /> }
       ]
