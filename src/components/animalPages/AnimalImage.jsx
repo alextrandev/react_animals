@@ -38,7 +38,7 @@ export default function AnimalImage({ name, categoryName }) {
 
   return (
     <>
-      {!imageLoaded && <img src={logo} className="h-full w-full" alt="Placeholder image" />}
+      {!imageLoaded && <img src={logo} className="h-full w-full opacity-50" alt="Placeholder image" />}
       <img
         src={imageLink}
         className={`h-full w-full ${!imageLoaded && "hidden"}`}
