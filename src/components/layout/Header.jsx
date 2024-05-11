@@ -1,11 +1,12 @@
 import { NavLink, Link } from "react-router-dom";
+import logo from "/images/zoo_logo.webp";
 
 export default function Header() {
   return (
     <header className="bg-gray-500 flex justify-between items-center px-10 text-white h-[8vh]">
       <div>
         <Link to={"/"} className="flex items-center gap-3">
-          <img className="h-7" src="https://graylinghospitalforanimals.com/wp-content/uploads/sites/19/2022/08/Placeholder-725-×-725-px.png" alt="Zoo app logo" />
+          <img className="h-7" src={logo} alt="Zoo app logo" />
           <h1 className="text-xl"> React Zoo App</h1>
         </Link>
       </div>
