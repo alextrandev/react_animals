@@ -10,16 +10,13 @@ export default function AnimalPage() {
   const navigate = useNavigate(); // for the back button, like history.go but not refreshing the page
   // use effect here to prevent infinite re-rendering
   useEffect(() => {
-    const fetchData = () => {
-      axios
-        .get(`https://en.wikipedia.org/api/rest_v1/page/summary/${animal}`,
-          {
-            headers: { 'accept': 'application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/Summary/1.4.2"' }
-          })
-        .then(response => setAnimalData(response.data))
-        .catch(error => console.log(error));
-    }
-    fetchData();
+    axios
+      .get(`https://en.wikipedia.org/api/rest_v1/page/summary/${animal}`,
+        {
+          headers: { 'accept': 'application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/Summary/1.4.2"' }
+        })
+      .then(response => setAnimalData(response.data))
+      .catch(error => console.log(error));
   }, [animal]);
 
   return (

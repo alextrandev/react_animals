@@ -1,19 +1,9 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import AnimalImage from "./AnimalImage";
 import LikeCounter from "./LikeCounter";
 
-function Card({ name, likes, categoryName, hideAnimal }) {
+function Card({ name, likes, category, hideAnimal, addLike, removeLike }) {
   const formatedName = name.charAt(0).toUpperCase() + name.slice(1).replace("-", " "); // some animal have hypening name so this one to format them properly
-  const [likeCounter, setLikeCounter] = useState(likes);
-
-  const handleLike = e => {
-    if (e.target.id == "addLike") {
-      setLikeCounter(likeCounter + 1);
-    } else if (e.target.id == "removeLike") {
-      setLikeCounter(likeCounter - 1);
-    }
-  }
 
   return (
     <div className="bg-gray-200 flex flex-col justify-between rounded shadow overflow-hidden">
@@ -24,9 +14,9 @@ function Card({ name, likes, categoryName, hideAnimal }) {
         <span className="material-symbols-rounded" id={name} onClick={hideAnimal}>close</span>
       </div>
       <Link to={`${name}`}>
-        <AnimalImage name={name} categoryName={categoryName} />
+        <AnimalImage name={name} category={category} />
       </Link>
-      <LikeCounter likeCounter={likeCounter} handleLike={handleLike} />
+      <LikeCounter likes={likes} addLike={addLike} removeLike={removeLike} />
     </div>
   )
 }

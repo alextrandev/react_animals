@@ -8,13 +8,31 @@ import AnimalPage from './pages/AnimalPage.jsx';
 
 export default function App() {
   const [zoo, setZoo] = useState({ animals, birds, fishes, insects }) // need work
+
+  const likesHandler = (name, category, action) => {
+    setZoo(prevState => ({
+      ...prevState,
+      [category]: prevState[category].map(animal =>
+        animal.name === name
+          ? { ...animal, likes: animal.likes + (action === 'add' ? 1 : -1) }
+          : animal
+      ),
+    }));
+  };
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Root zoo={zoo}/>,
+      element: <Root zoo={zoo} />,
       children: [
         { path: "/", element: <Home zoo={zoo} /> },
-        { path: ":category", element: <CategoryPage {...zoo} /> },
+        {
+          path: ":category",
+          element: <CategoryPage
+            {...zoo}
+            addLike={likesHandler}
+            removeLike={likesHandler} />
+        },
         { path: ":category/:animal", element: <AnimalPage {...zoo} /> }
       ]
     }

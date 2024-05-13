@@ -3,7 +3,7 @@ import Card from "./Card";
 import SearchBar from "./SearchBar";
 import debounce from "../../functions/debounce";
 
-export default function AnimalsGrid({ animals, categoryName }) {
+export default function AnimalsGrid({ animals, category, addLike, removeLike }) {
   const [page, setPage] = useState(0);
   const [searchInput, setSearchInput] = useState("");
   const [hiddenAnimals, setHiddenAnimals] = useState([]);
@@ -40,7 +40,7 @@ export default function AnimalsGrid({ animals, categoryName }) {
   return (
     <div className="main">
       <div className="flex px-10 justify-between">
-        <h2 className="text-xl font-boldpb-1">{categoryName}</h2>
+        <h2 className="text-xl font-boldpb-1">{category[0].toUpperCase() + category.slice(1)}</h2>
         <SearchBar searchChangeHandler={searchChangeHandler} />
         <div className="flex gap-4">
           {page > 0 &&
@@ -63,9 +63,12 @@ export default function AnimalsGrid({ animals, categoryName }) {
         {displayAnimals.map(animal =>
           <Card
             key={animal.name}
-            {...animal}
-            categoryName={categoryName}
+            name={animal.name}
+            likes={animal.likes}
+            category={category}
             hideAnimal={hideAnimal}
+            addLike={() => addLike(animal.name, category, "add")}
+            removeLike={() => removeLike(animal.name, category, "remove")}
           />)}
       </div>
       <div className="text-center px-6">
