@@ -20,7 +20,10 @@ export default function AnimalsGrid({ animals, categoryName }) {
   const numberOfAnimals = filteredAnimals.length;
   const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
   const displayAnimals = filteredAnimals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
-  if (displayAnimals.length == 0) setPage(page - 1); // to move to previous page when page is empty
+
+  if (displayAnimals.length == 0 && page !== 0) {
+    setPage(page - 1);
+  } // to move to previous page when page is empty
 
   const previousClickHandler = () => {
     setPage(page - 1);
@@ -66,7 +69,10 @@ export default function AnimalsGrid({ animals, categoryName }) {
           />)}
       </div>
       <div className="text-center px-6">
-        <p>Displaying {page * animalsPerPage + 1} -  {page * animalsPerPage + displayAnimals.length} animals out of {numberOfAnimals}</p>
+        {numberOfAnimals !== 0
+          ? <p>Displaying {page * animalsPerPage + 1} - {page * animalsPerPage + displayAnimals.length} animals out of {numberOfAnimals}</p>
+          : <p>No animal to display</p>
+        }
       </div>
     </div>
   )
