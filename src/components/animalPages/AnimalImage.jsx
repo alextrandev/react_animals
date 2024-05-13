@@ -1,35 +1,25 @@
 import logo from "/images/zoo_logo.webp";
-// import { useState } from 'react';
-// import { createClient } from 'pexels';
 
 import { useState } from "react";
 
-export default function AnimalImage({ name, categoryName }) {
-  // const [imageLink, setImageLink] = useState("");
+export default function AnimalImage({ name, category }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   let categoryQuery = "animal";
 
-  switch (categoryName) {
-    case "Mammals":
+  switch (category) {
+    case "mammals":
       categoryQuery = "animal";
       break;
-    case "Birds":
+    case "birds":
       categoryQuery = "bird";
       break;
-    case "Fishes":
+    case "fishes":
       categoryQuery = "fish";
       break;
-    case "Insects":
+    case "insects":
       categoryQuery = "insect";
       break;
   }
-
-  // const query = name + " " + categoryQuery;
-  // const client = createClient(import.meta.env.VITE_API_KEY);
-
-  // client.photos.search({ query, orientation: "landscape", per_page: 1 }).then(photos => {
-  //   setImageLink(photos.photos[0].src.original);
-  // });
 
   const imageLink = `https://source.unsplash.com/400x400/?${name}+${categoryQuery}`
 
