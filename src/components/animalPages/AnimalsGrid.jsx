@@ -3,10 +3,12 @@ import Card from "./Card";
 import SearchBar from "./SearchBar";
 import debounce from "../../functions/debounce";
 
+// need work. too long and messy. need to move pagination to a new component and maybe search as well
+
 export default function AnimalsGrid({ animals, category, addLike, removeLike }) {
   const [page, setPage] = useState(0);
   const [searchInput, setSearchInput] = useState("");
-  const [hiddenAnimals, setHiddenAnimals] = useState([]);
+  const [hiddenAnimals, setHiddenAnimals] = useState([]); // need work. move this state to App.jsx
 
   // search function using filter
   const formatedInput = searchInput.trim().toLowerCase();
@@ -21,20 +23,13 @@ export default function AnimalsGrid({ animals, category, addLike, removeLike }) 
   const numberOfPages = Math.ceil(numberOfAnimals / animalsPerPage);
   const displayAnimals = filteredAnimals.slice(page * animalsPerPage, (page + 1) * animalsPerPage);
 
-  if (displayAnimals.length == 0 && page !== 0) {
-    setPage(page - 1);
-  } // to move to previous page when page is empty
+  if (displayAnimals.length == 0 && page !== 0) setPage(page - 1); // to move to previous page when page is empty
 
-  const previousClickHandler = () => {
-    setPage(page - 1);
-  }
+  // change pagination page functions
+  const previousClickHandler = () => setPage(page - 1);
+  const nextClickHandler = () => setPage(page + 1);
 
-  const nextClickHandler = () => {
-    setPage(page + 1);
-  }
-
-  const searchChangeHandler = debounce(e => setSearchInput(e.target.value), 1000);
-
+  const searchChangeHandler = debounce(e => setSearchInput(e.target.value), 1000); // add debounce to search
   const hideAnimal = e => setHiddenAnimals([...hiddenAnimals, e.target.id]);
 
   return (
@@ -76,9 +71,9 @@ export default function AnimalsGrid({ animals, category, addLike, removeLike }) 
             likes={999}
             category="animals"
             hideAnimal={console.log("Cannot hide")}
-            addLike={console.log("Kitty already miximum loved")}
+            addLike={console.log("Kitty is already maximum loved")}
             removeLike={console.log("Can't dislike a kitty")}
-          />
+          /> // a secret animal, render when no animal is found. a workaround to prevent layout shift
         }
       </div>
       <div className="text-center px-6">

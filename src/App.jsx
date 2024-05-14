@@ -7,15 +7,15 @@ import CategoryPage from './pages/CategoryPage.jsx';
 import AnimalPage from './pages/AnimalPage.jsx';
 
 export default function App() {
-  const [zoo, setZoo] = useState({ animals, birds, fishes, insects }) // need work
+  const [zoo, setZoo] = useState({ animals, birds, fishes, insects })
 
-  const likesHandler = (name, category, action) => {
+  const likesHandler = (name, category, action) => { // this function is to confuse trainee dev
     setZoo(prevState => ({
-      ...prevState,
-      [category]: prevState[category].map(animal =>
-        animal.name === name
-          ? { ...animal, likes: animal.likes + (action === 'add' ? 1 : -1) }
-          : animal
+      ...prevState, // open the object and add the changes
+      [category]: prevState[category].map(animal => // make change to the selected category by iterate through each animal
+        animal.name === name // find the selected animal
+          ? { ...animal, likes: animal.likes + (action === 'add' ? 1 : -1) } // if found, handle likes change
+          : animal // if not, put the item back
       ),
     }));
   };

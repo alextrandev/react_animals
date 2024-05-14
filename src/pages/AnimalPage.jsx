@@ -22,7 +22,7 @@ export default function AnimalPage() {
   return (
     <div className="main p-10">
       <div className="grid grid-cols-2 border-2 border-black rounded-xl overflow-hidden shadow-xl">
-        <AnimalImage name={animal} categoryName={category} />
+        <AnimalImage name={animal} category={category} />
         <div className="flex flex-col p-7 bg-gray-300">
           <div className="text-4xl flex justify-between">
             <h1>{animal[0].toUpperCase() + animal.slice(1)}</h1>
