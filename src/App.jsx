@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx';
 import { animals, birds, fishes, insects } from './assets/animalsList.js';
 import CategoryPage from './pages/CategoryPage.jsx';
 import AnimalPage from './pages/AnimalPage.jsx';
+import About from './pages/About.jsx';
 
 export default function App() {
   const [zoo, setZoo] = useState({ animals, birds, fishes, insects }) // need work
@@ -33,7 +34,8 @@ export default function App() {
             addLike={likesHandler}
             removeLike={likesHandler} />
         },
-        { path: ":category/:animal", element: <AnimalPage {...zoo} /> }
+        { path: ":category/:animal", element: <AnimalPage {...zoo} /> },
+        { path: "about", element: <About /> }
       ]
     }
   ])

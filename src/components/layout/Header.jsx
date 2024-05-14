@@ -18,6 +18,7 @@ export default function Header({ zoo }) {
               <NavLink to={`/${category}`}>{category[0].toUpperCase() + category.slice(1)}</NavLink >
             </li>
           )}
+          <li><NavLink to={"/about"}>About</NavLink></li>
         </ul>
       </div>
     </ header>
