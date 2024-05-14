@@ -70,11 +70,21 @@ export default function AnimalsGrid({ animals, category, addLike, removeLike }) 
             addLike={() => addLike(animal.name, category, "add")}
             removeLike={() => removeLike(animal.name, category, "remove")}
           />)}
+        {displayAnimals.length == 0 &&
+          <Card
+            name="Kitty"
+            likes={999}
+            category="animals"
+            hideAnimal={console.log("Cannot hide")}
+            addLike={console.log("Kitty already miximum loved")}
+            removeLike={console.log("Can't dislike a kitty")}
+          />
+        }
       </div>
       <div className="text-center px-6">
         {numberOfAnimals !== 0
           ? <p>Displaying {page * animalsPerPage + 1} - {page * animalsPerPage + displayAnimals.length} animals out of {numberOfAnimals}</p>
-          : <p>No animal to display</p>
+          : <p>No animal found. So here is a kitty to keep you companied</p>
         }
       </div>
     </div>
